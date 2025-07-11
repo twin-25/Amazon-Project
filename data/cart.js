@@ -22,11 +22,11 @@ export function addToCart(productId){
     });
 
     if (matchingItem){
-      matchingItem.quatity += 1;
+      matchingItem.quantity += 1;
     }else{
       cart.push({
         productId: productId,
-        quatity: 1
+        quantity: 1
       });
     }
     saveToStorage();
