@@ -1,4 +1,4 @@
-import { cart, removeFromCart } from "../data/cart.js";
+import { cart, removeFromCart, updateQuantity } from "../data/cart.js";
 import { products } from "../data/products.js";
 import { formatCurrency } from "./utils/money.js";
 
@@ -41,6 +41,8 @@ cart.forEach((cartItem)=>{
               <span class="update-quantity-link link-primary js-update-link" data-product-id = "${matchingProduct.id}">
                 Update
               </span>
+              <input class="quantity-input js-quantity-input-${matchingProduct.id}"/>
+              <span tabindex="0" class = "save-quantity-link link-primary js-save-quantity-link" data-product-id = "${matchingProduct.id}">Save</span>
               <span class="delete-quantity-link link-primary js-delete-link" data-product-id = "${matchingProduct.id}">
                 Delete
               </span>
@@ -117,11 +119,39 @@ document.querySelectorAll('.js-delete-link').forEach((link) =>{
 
 document.querySelectorAll('.js-update-link').forEach((link)=>{
   link.addEventListener('click', ()=>{
-    console.log(link.dataset.productId);
-  })
-})
+    const container = document.querySelector(`.js-cart-item-container-${link.dataset.productId}`);
+    container.classList.add('is-editing-quantity');
+    // console.log(container);
+  });
+});
 
-function updateCartQuantity(){
+
+function handleEvent(link){
+    const container = document.querySelector(`.js-cart-item-container-${link.dataset.productId}`)
+    // console.log(container)
+    container.classList.remove('is-editing-quantity');
+    // console.log(container)
+    const quantityInput = document.querySelector(`.js-quantity-input-${link.dataset.productId}`);
+    const newQuantity = Number(quantityInput.value);
+    updateQuantity(link.dataset.productId, newQuantity);
+    const quantityLabel = container.querySelector('.quantity-label');
+    quantityLabel.innerText = updateQuantity(link.dataset.productId, newQuantity);
+    updateCartQuantity();
+    
+  }
+
+
+document.querySelectorAll('.js-save-quantity-link').forEach((link)=>{
+    link.addEventListener('click', () => handleEvent(link));
+    link.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        handleEvent(link);
+      }
+    });
+});
+
+
+export function updateCartQuantity(){
 
 let cartQuantity = 0; 
 

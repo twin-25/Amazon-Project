@@ -1,4 +1,5 @@
 
+
 export let cart = JSON.parse(localStorage.getItem('cart')) ||
 [{
   productId: 'e43638ce-6aa0-4b85-b27f-e1d07eb678c6',
@@ -47,4 +48,22 @@ export function removeFromCart(productId) {
 
   saveToStorage();
 
+}
+
+export function updateQuantity(productId, newQuantity) {
+  let finalquantity = newQuantity
+  cart.forEach((cartItem) => {
+    if (cartItem.productId === productId) {
+      if (newQuantity < 1) {
+        cartItem.quantity = 0;
+      } else if (newQuantity > 1000) {
+        cartItem.quantity = 1000;
+      } else {
+        cartItem.quantity = newQuantity;
+      }
+      finalquantity = cartItem.quantity
+    }
+  });
+  saveToStorage();
+  return finalquantity;
 }
