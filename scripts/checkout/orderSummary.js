@@ -1,4 +1,4 @@
-import { cart, removeFromCart, updateQuantity, updateDeliveryOption } from "../../data/cart.js";
+import { cart, removeFromCart, updateQuantity, updateDeliveryOption, updateCartQuantity } from "../../data/cart.js";
 import { products, getProduct} from "../../data/products.js";
 import { formatCurrency } from "../utils/money.js";
 import{hello} from 'https://unpkg.com/supersimpledev@1.0.1/hello.esm.js';
@@ -161,17 +161,6 @@ import { renderPaymentSummary } from "./paymentSummary.js";
   });
 
 
- function updateCartQuantity(){
-
-  let cartQuantity = 0; 
-
-  cart.forEach((cartItem) =>{
-    cartQuantity += cartItem.quantity;
-  });
-
-  document.querySelector('.js-return-to-home-link').innerHTML = `${cartQuantity} items`;
-
-  }
 
   document.querySelectorAll('.js-delivery-option'). forEach((elemnet)=>{
     elemnet.addEventListener('click', ()=>{

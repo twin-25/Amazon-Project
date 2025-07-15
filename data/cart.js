@@ -1,3 +1,4 @@
+import { renderChekoutHeader } from "../scripts/checkout/checkoutHeader.js";
 import { renderPaymentSummary } from "../scripts/checkout/paymentSummary.js";
 
 
@@ -60,6 +61,7 @@ export function removeFromCart(productId) {
   cart = newCart;
 
   saveToStorage();
+  renderChekoutHeader();
 
 }
 
@@ -79,6 +81,7 @@ export function updateQuantity(productId, newQuantity) {
   });
   saveToStorage();
   renderPaymentSummary();
+  renderChekoutHeader();
   return finalquantity;
   
 }
@@ -97,3 +100,17 @@ export function updateQuantity(productId, newQuantity) {
 
     saveToStorage();
  }
+
+
+export function updateCartQuantity(){
+
+  let cartQuantity = 0; 
+
+  cart.forEach((cartItem) =>{
+    cartQuantity += cartItem.quantity;
+  });
+
+  
+  return cartQuantity;
+
+  }
