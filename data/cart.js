@@ -1,3 +1,4 @@
+import { renderPaymentSummary } from "../scripts/checkout/paymentSummary.js";
 
 
 
@@ -77,7 +78,9 @@ export function updateQuantity(productId, newQuantity) {
     }
   });
   saveToStorage();
+  renderPaymentSummary();
   return finalquantity;
+  
 }
 
 
