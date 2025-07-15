@@ -5,6 +5,7 @@ import{hello} from 'https://unpkg.com/supersimpledev@1.0.1/hello.esm.js';
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 import {deliveryOptions, getDeliveryOption} from '../../data/deliveryOptions.js'
 import { renderPaymentSummary } from "./paymentSummary.js";
+import { renderChekoutHeader } from "./checkoutHeader.js";
 
 
  export function renderOrderSummary(){
@@ -120,6 +121,7 @@ import { renderPaymentSummary } from "./paymentSummary.js";
       removeFromCart(productId);
       
       //updateCartQuantity();
+      renderChekoutHeader();
       renderOrderSummary();
       renderPaymentSummary();
     });
@@ -147,6 +149,8 @@ import { renderPaymentSummary } from "./paymentSummary.js";
       const quantityLabel = container.querySelector('.quantity-label');
       quantityLabel.innerText = updateQuantity(link.dataset.productId, newQuantity);
       updateCartQuantity();
+      renderChekoutHeader();
+      renderPaymentSummary();
       
     }
 

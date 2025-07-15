@@ -61,7 +61,6 @@ export function removeFromCart(productId) {
   cart = newCart;
 
   saveToStorage();
-  renderChekoutHeader();
 
 }
 
@@ -80,8 +79,6 @@ export function updateQuantity(productId, newQuantity) {
     }
   });
   saveToStorage();
-  renderPaymentSummary();
-  renderChekoutHeader();
   return finalquantity;
   
 }
