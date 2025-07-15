@@ -30,28 +30,28 @@ export function renderPaymentSummary() {
           <div class="payment-summary-row">
             <div>Items (3):</div>
             <div class="payment-summary-money">
-            ${formatCurrency(productPriceCents)}
+            $${formatCurrency(productPriceCents)}
             </div>
           </div>
 
           <div class="payment-summary-row">
             <div>Shipping &amp; handling:</div>
-            <div class="payment-summary-money">${formatCurrency(shippingPriceCents)}</div>
+            <div class="payment-summary-money">$${formatCurrency(shippingPriceCents)}</div>
           </div>
 
           <div class="payment-summary-row subtotal-row">
             <div>Total before tax:</div>
-            <div class="payment-summary-money">${formatCurrency(totalBeforeTax)}</div>
+            <div class="payment-summary-money">$${formatCurrency(totalBeforeTax)}</div>
           </div>
 
           <div class="payment-summary-row">
             <div>Estimated tax (10%):</div>
-            <div class="payment-summary-money">${formatCurrency(taxCents)}</div>
+            <div class="payment-summary-money">$${formatCurrency(taxCents)}</div>
           </div>
 
           <div class="payment-summary-row total-row">
             <div>Order total:</div>
-            <div class="payment-summary-money">${formatCurrency(totalcents)}</div>
+            <div class="payment-summary-money">$${formatCurrency(totalcents)}</div>
           </div>
 
           <button class="place-order-button button-primary">
