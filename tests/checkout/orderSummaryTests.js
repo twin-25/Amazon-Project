@@ -1,5 +1,6 @@
 import { renderOrderSummary } from "../../scripts/checkout/orderSummary.js";
 import {loadFromStorage, cart} from '../../data/cart.js';
+import { products, getProduct } from "../../data/products.js";
 
 describe('test suite: render order summary', ()=>{
   const productId1 = 'e43638ce-6aa0-4b85-b27f-e1d07eb678c6';
@@ -44,7 +45,10 @@ describe('test suite: render order summary', ()=>{
 
     expect( document.querySelector(`.js-product-quantity-${productId2}`).innerText).toContain('Quantity: 1');
 
-    document.querySelector('.js-test-container').innerHTML = '';
+    expect( document.querySelector(`.js-product-name-${productId1}`).innerText).toContain(getProduct(productId1).name);
+
+    expect( document.querySelector(`.js-product-name-${productId2}`).innerText).toContain(getProduct(productId2).name);
+    
 
   });
 
@@ -59,8 +63,12 @@ describe('test suite: render order summary', ()=>{
     expect(cart[0].productId).toEqual(productId2)
 
 
-    document.querySelector('.js-test-container').innerHTML = '';
+    
   });
+
+  afterEach(() =>{
+    document.querySelector('.js-test-container').innerHTML = '';
+  })
 
   
 });
