@@ -1,6 +1,7 @@
 import { renderOrderSummary } from "../../scripts/checkout/orderSummary.js";
 import {loadFromStorage, cart} from '../../data/cart.js';
 import { products, getProduct } from "../../data/products.js";
+import { formatCurrency} from "../../scripts/utils/money.js";
 
 describe('test suite: render order summary', ()=>{
   const productId1 = 'e43638ce-6aa0-4b85-b27f-e1d07eb678c6';
@@ -48,6 +49,10 @@ describe('test suite: render order summary', ()=>{
     expect( document.querySelector(`.js-product-name-${productId1}`).innerText).toContain(getProduct(productId1).name);
 
     expect( document.querySelector(`.js-product-name-${productId2}`).innerText).toContain(getProduct(productId2).name);
+
+    expect( document.querySelector(`.js-product-price-${productId1}`).innerText).toContain(`$${formatCurrency(getProduct(productId1).priceCents)}`);
+
+    expect( document.querySelector(`.js-product-price-${productId2}`).innerText).toContain(`$${formatCurrency(getProduct(productId2).priceCents)}`);
     
 
   });
