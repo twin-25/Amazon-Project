@@ -36,6 +36,7 @@ describe('test suite: render order summary', ()=>{
 
     renderOrderSummary();
 
+
   })
 
   it('add a product', ()=> {
@@ -70,6 +71,16 @@ describe('test suite: render order summary', ()=>{
 
     
   });
+
+  it('update delivery option', ()=>{
+    document.querySelector(`.js-delivery-option-${productId1}-3`).click();
+    expect(document.querySelector(`.js-delivery-option-input-${productId1}-3`).checked).toEqual(true);
+    expect(cart.length).toEqual(2);
+    expect(cart[0].productId).toEqual(productId1);
+    expect(cart[0].deliveryOptionId).toEqual('3');
+    expect(document.querySelector('.js-payment-summary-shipping').innerText).toContain('$14.98');
+    expect(document.querySelector('.js-payment-summary-total').innerText).toContain('$63.50');
+  })
 
   afterEach(() =>{
     document.querySelector('.js-test-container').innerHTML = '';
