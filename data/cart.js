@@ -98,6 +98,9 @@ export function updateQuantity(productId, newQuantity) {
         matchingItem = cartItem;
       }
     }); 
+    if (!matchingItem){
+      return;
+    }
 
     matchingItem.deliveryOptionId = deliveryOptionId;
 

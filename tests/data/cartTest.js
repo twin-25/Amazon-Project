@@ -150,6 +150,25 @@ it('Update a delivery option of an existing item in the cart', ()=>{
     }
     ])
   );
+  
 });
+it('update a delivery option of a product that is not in the cart', ()=>{
+  updateDeliveryOption("83d4ca15-0f35-48f5-b7a3-1ea210004f2e", '1');
+  expect(localStorage.setItem).toHaveBeenCalledWith('cart', JSON.stringify([
+    {
+      productId: productId1,
+      quantity: 2,
+      deliveryOptionId: '3'
+    },
+    {
+      productId: productId2,
+      quantity: 1,
+      deliveryOptionId: '2'
+    }
+    ])
+  );
 
-  });
+
+    });
+
+});
