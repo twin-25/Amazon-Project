@@ -167,7 +167,19 @@ it('update a delivery option of a product that is not in the cart', ()=>{
     }
     ])
   );
-
+  updateDeliveryOption(productId1, '4');
+  expect(localStorage.setItem).toHaveBeenCalledWith('cart', JSON.stringify([
+    {
+      productId: productId1,
+      quantity: 2,
+      deliveryOptionId: '3'
+    },
+    {
+      productId: productId2,
+      quantity: 1,
+      deliveryOptionId: '2'
+    }
+    ]));
 
     });
 
