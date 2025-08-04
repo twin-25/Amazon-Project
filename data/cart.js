@@ -1,5 +1,3 @@
-import { renderChekoutHeader } from "../scripts/checkout/checkoutHeader.js";
-import { renderPaymentSummary } from "../scripts/checkout/paymentSummary.js";
 import { deliveryOptions } from "./deliveryOptions.js";
 
 
