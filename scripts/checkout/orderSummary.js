@@ -1,7 +1,6 @@
 import { cart, removeFromCart, updateQuantity, updateDeliveryOption, updateCartQuantity } from "../../data/cart.js";
 import { products, getProduct} from "../../data/products.js";
 import { formatCurrency } from "../utils/money.js";
-import{hello} from 'https://unpkg.com/supersimpledev@1.0.1/hello.esm.js';
 
 import {deliveryOptions, getDeliveryOption, calculateDeliveryDate} from '../../data/deliveryOptions.js'
 import { renderPaymentSummary } from "./paymentSummary.js";
