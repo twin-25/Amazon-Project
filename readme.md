@@ -66,11 +66,6 @@ python3 -m http.server
 - [Day.js](https://day.js.org/) for date formatting
 - [SuperSimpleBackend.dev](https://supersimple.dev/projects/amazon) (provided backend)
 
----
-
-## 📸 Screenshots
-
-> Add screenshots here (optional)
 
 ---
 
