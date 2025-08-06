@@ -14,6 +14,7 @@ loadProductsFetch().then(() =>{
   let orderHTML = '';
   orders.forEach((order)=>{
     let productsHTML = ''
+    const orderId = order.id;
     order.products.forEach((orderproduct) =>{
     const product = getProduct(orderproduct.productId);
     productsHTML += `            
@@ -38,7 +39,7 @@ loadProductsFetch().then(() =>{
     </div>
 
     <div class="product-actions">
-      <a href="tracking.html?orderId=123&productId=4">
+      <a href="tracking.html?orderId=${orderId}&productId=${orderproduct.productId}">
         <button class="track-package-button button-secondary">
           Track package
         </button>
