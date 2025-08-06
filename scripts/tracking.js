@@ -1,8 +1,47 @@
 import { loadProductsFetch, getProduct } from "../data/products.js";
 import { findOrder, findProduct} from "../data/ordersData.js"; 
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
+import { updateCartQuantity } from "../data/cart.js";
+
+
+function renderTrackingHeader(){
+
+    const trackingHeaderHtml = `      <div class="amazon-header-left-section">
+        <a href="amazon.html" class="header-link">
+          <img class="amazon-logo"
+            src="images/amazon-logo-white.png">
+          <img class="amazon-mobile-logo"
+            src="images/amazon-mobile-logo-white.png">
+        </a>
+      </div>
+
+      <div class="amazon-header-middle-section">
+        <input class="search-bar" type="text" placeholder="Search">
+
+        <button class="search-button">
+          <img class="search-icon" src="images/icons/search-icon.png">
+        </button>
+      </div>
+
+      <div class="amazon-header-right-section">
+        <a class="orders-link header-link" href="orders.html">
+          <span class="returns-text">Returns</span>
+          <span class="orders-text">& Orders</span>
+        </a>
+
+        <a class="cart-link header-link" href="checkout.html">
+          <img class="cart-icon" src="images/icons/cart-icon.png">
+          <div class="cart-quantity">${updateCartQuantity()}</div>
+          <div class="cart-text">Cart</div>
+        </a>
+      </div>`
+
+    document.querySelector('.js-amazon-header').innerHTML = trackingHeaderHtml;
+  }
+
 
 loadProductsFetch().then(()=>{
+renderTrackingHeader();
 const url = new URL(window.location.href);
 const orderId = url.searchParams.get('orderId');
 const productId = url.searchParams.get('productId');
@@ -47,3 +86,4 @@ const trackingHTML = `<a class="back-to-orders-link link-primary" href="orders.h
   document.querySelector('.js-order-tracking').innerHTML = trackingHTML;
 
   });
+
