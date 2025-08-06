@@ -2,7 +2,7 @@ import { cart } from "../../data/cart.js";
 import { getProduct } from "../../data/products.js";
 import { getDeliveryOption } from "../../data/deliveryOptions.js";
 import {formatCurrency} from '../utils/money.js';
-import { addOrder } from "../../data/orders.js";
+import { addOrder } from "../../data/ordersData.js";
 
 
 export function renderPaymentSummary() {
@@ -62,7 +62,7 @@ export function renderPaymentSummary() {
             Place your order
           </button>`;
       document.querySelector('.js-payment-summary').innerHTML = paymentSummaryHTML;
-
+      console.log('cart sending', cart)
       document.querySelector('.js-place-order')
         .addEventListener('click', async () =>{
           try {
@@ -76,6 +76,7 @@ export function renderPaymentSummary() {
                   })
                 });
                 const order = await response.json();
+                console.log('order received',order);
                 addOrder(order);
 
           }catch(error){
