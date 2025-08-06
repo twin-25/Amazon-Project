@@ -62,7 +62,7 @@ export function renderPaymentSummary() {
             Place your order
           </button>`;
       document.querySelector('.js-payment-summary').innerHTML = paymentSummaryHTML;
-      console.log('cart sending', cart)
+      // console.log('cart sending', cart)
       document.querySelector('.js-place-order')
         .addEventListener('click', async () =>{
           try {
